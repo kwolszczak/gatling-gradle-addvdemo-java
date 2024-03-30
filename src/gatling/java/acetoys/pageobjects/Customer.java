@@ -17,7 +17,9 @@ public class Customer {
                     .formParam("_csrf", "#{token}")
                     .formParam("username", "user1")
                     .formParam("password", "pass")
-                    .check(css("#_csrf", "content").saveAs("token")));
+                    .check(css("#_csrf", "content").saveAs("token"))
+            )
+                    .exec(session -> session.set("customerLoggedIn",true));
 
 
     public static ChainBuilder logout =

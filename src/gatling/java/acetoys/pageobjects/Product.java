@@ -1,6 +1,8 @@
 package acetoys.pageobjects;
 
 import io.gatling.javaapi.core.*;
+
+
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 public class Product {
@@ -13,4 +15,5 @@ public class Product {
                     http("Add #{name} to the cart")
                             .get("/cart/add/#{id}")
             );
+
 }

@@ -1,6 +1,7 @@
 package acetoys;
 
 import acetoys.pageobjects.*;
+import acetoys.session.UserSession;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.*;
 
@@ -20,21 +21,14 @@ public class RecordedSimulation extends Simulation {
 
 
   private ScenarioBuilder scn = scenario("RecordedSimulation")
+          .exec(UserSession.initSession)
           .exec(StaticPages.homePage)
           .pause(2)
-          .exec(
-            session -> {
-              System.out.println(session);
-              System.out.println("token: "+session.get("token"));
-              return session;
-          })
-          .pause(2)
           .exec(Category.productListByCategory)
           .pause(2)
-          .exec(Category.loadPage1OfProducts)
+          .exec(Category.loadPage)
           .pause(2)
-          .exec(Category.loadPage2OfProducts)
-          .pause(2)
+
           .exec(Product.addProduct)
           .pause(2)
           .exec(Category.productListByCategory)
@@ -43,7 +37,7 @@ public class RecordedSimulation extends Simulation {
           .pause(2)
           .exec(Product.addProduct)
           .pause(2)
-          .exec(Customer.login)
+          .exec(Cart.goToTheCartView)
           .pause(2)
           .exec(Cart.goToTheCartView)
           .pause(2)
@@ -54,6 +48,7 @@ public class RecordedSimulation extends Simulation {
           .exec(Cart.decreaseProduct19)
           .pause(2)
           .exec(Cart.goToTheCheckout)
+
           .randomSwitch().on(
                   percent(10).then(Customer.logout) // 10% uzyj logout
           );

@@ -8,22 +8,33 @@ import static io.gatling.javaapi.http.HttpDsl.*;
 public class Cart {
 
     public static ChainBuilder goToTheCartView =
-            exec(   http("Go to the cart")
+            doIf(session -> !session.getBoolean("customerLoggedIn"))
+                    .then(
+                            exec(Customer.login)
+                    )
+            .exec(session -> {
+                        System.out.println(session);
+                        return session;
+                    })
+            .exec( http("Go to the cart")
                     .get("/cart/view")
                     .check(css("#CategoryHeader").is("Cart Overview"))
             );
 
     public static ChainBuilder increaseProduct19 =
-            exec(       http("Increase product 19")
+            exec(
+                    http("Increase product 19")
                             .get("/cart/add/19?cartPage=true")
             );
     public static ChainBuilder decreaseProduct19 =
-            exec(             http("Decrease product 19")
-                    .get("/cart/subtract/19")
+            exec(
+                    http("Decrease product 19")
+                            .get("/cart/subtract/19")
             );
 
     public static ChainBuilder goToTheCheckout =
-            exec(                  http("go to the checkout")
-                    .get("/cart/checkout")
+            exec(
+                    http("go to the checkout")
+                            .get("/cart/checkout")
             );
 }
