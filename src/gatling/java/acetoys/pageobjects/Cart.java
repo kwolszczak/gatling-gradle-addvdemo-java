@@ -1,7 +1,7 @@
 package acetoys.pageobjects;
 
+import acetoys.session.UserSession;
 import io.gatling.javaapi.core.*;
-import io.gatling.javaapi.http.*;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
@@ -21,15 +21,21 @@ public class Cart {
                     .check(css("#CategoryHeader").is("Cart Overview"))
             );
 
-    public static ChainBuilder increaseProduct19 =
+    public static ChainBuilder increaseProduct =
+            exec(UserSession.increaseItemsInBasket).
+            exec(UserSession.increaseBasketTotal).
             exec(
-                    http("Increase product 19")
-                            .get("/cart/add/19?cartPage=true")
+                    http("Increase product #{name}")
+                            .get("/cart/add/#{id}?cartPage=true")
+                            .check(css("#grandTotal").isEL("$#{basketTotalPrice}"))
             );
-    public static ChainBuilder decreaseProduct19 =
+    public static ChainBuilder decreaseProduct =
+            exec(UserSession.decreaseItemsInBasket).
+            exec(UserSession.decreaseBasketTotal).
             exec(
-                    http("Decrease product 19")
-                            .get("/cart/subtract/19")
+                    http("Decrease product #{name}")
+                            .get("/cart/subtract/#{id}")
+                            .check(css("#grandTotal").isEL("$#{basketTotalPrice}"))
             );
 
     public static ChainBuilder goToTheCheckout =
