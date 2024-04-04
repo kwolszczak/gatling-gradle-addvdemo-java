@@ -22,7 +22,7 @@ public class Category {
                     .check(css("#CategoryName").isEL("#{categoryName}"))
             );
 
-    public static ChainBuilder loadPage =
+    public static ChainBuilder cyclePagesOfProducts =
             exec(
                     session -> {
                         int currentPageNumber = session.getInt("productsListPageNumber");
