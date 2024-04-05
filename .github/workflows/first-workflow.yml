@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Print greeting
         run: echo "Hello World"
       
@@ -24,6 +25,7 @@ jobs:
       - name: Run gatling
         run: |
           ./gradlew gatlingRun-acetoys.RecordedSimulation
+          
       - name: Publish smoke test artifacts
         if: always()
         uses: actions/upload-artifact@v4

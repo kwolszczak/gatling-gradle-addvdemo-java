@@ -7,15 +7,21 @@ on:
   #this is second workflow 2
 
 jobs:
-  pre-job:
+  pre-job:                      #jobs run parallel now- untill you add needs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say something
+        run: |
+          echo "Goodbye everyone ;( "
+  second-job:                      #jobs run parallel now- untill you add needs
     runs-on: ubuntu-latest
     steps:
       - name: Say something
         run: |
           echo "Hello world!"
-          echo "Goodbye everyone ;( "
 
   perf-test:
+    needs: [pre-job]        #now job run one after another
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
