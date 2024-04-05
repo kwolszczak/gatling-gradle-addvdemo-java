@@ -13,6 +13,9 @@ jobs:
     name: Run cos on Ubuntu
     runs-on: ubuntu-latest              #runners
     steps:
+     - name: Checkout code
+        uses: actions/checkout@v4
+     
      
       - name: Print greeting
         run: echo "Hello World"
