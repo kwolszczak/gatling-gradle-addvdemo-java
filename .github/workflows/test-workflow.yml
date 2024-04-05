@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Say something
         run: |
-          echo "Goodbye everyone ;( "
-  second-job:                      #jobs run parallel now- untill you add needs
+          echo "Goodbye everyone ;(  ${{ toJSON(github) }}"
+  second-job:                      #jobs run parallel - untill you add needs
     runs-on: ubuntu-latest
     steps:
       - name: Say something
