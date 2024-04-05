@@ -13,14 +13,7 @@ jobs:
     name: Run cos on Ubuntu
     runs-on: ubuntu-latest              #runners
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'zulu'
-          cache: 'gradle'
+     
       - name: Print greeting
         run: echo "Hello World"
       
