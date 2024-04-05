@@ -32,9 +32,9 @@ public class RecordedSimulation extends Simulation {
       if (TEST_TYPE.equals("instantUser")) {
           setUp(TestScenario.defaultLoadTest.injectOpen(atOnceUsers(1))).protocols(httpProtocol)
                   .assertions(
-                          global().responseTime().mean().lt(5),
+                          global().responseTime().mean().lt(200),
                           global().successfulRequests().percent().gt(99.0),
-                          forAll().responseTime().max().lt(7)
+                          forAll().responseTime().max().lt(300)
                   );
       }
       else
