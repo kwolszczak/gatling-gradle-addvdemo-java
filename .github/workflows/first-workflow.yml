@@ -23,13 +23,13 @@ jobs:
 
       - name: Run gatling
         run: |
-          gradle gatlingRun-acetoys.RecordedSimulation
+          ./gradlew gatlingRun-acetoys.RecordedSimulation
       - name: Publish smoke test artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: build/test-results
+          path: build/reports/gatling
           retention-days: 7
         
     
