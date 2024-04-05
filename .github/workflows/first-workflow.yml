@@ -1,6 +1,13 @@
 name: First Workflow                # name of workflow
 on: workflow_dispatch               # to run manually
 
+permissions:
+  contents: read
+  checks: write
+  issues: read
+  packages: read
+  pull-requests: write
+
 jobs:
   my-first-job:                        #name for job
     name: Run cos on Ubuntu
