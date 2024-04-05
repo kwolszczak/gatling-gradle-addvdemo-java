@@ -1,6 +1,5 @@
 name: ACE Toys Performance Test
 on:
-  workflow_dispatch:
   push: [feature]
 
 jobs:
