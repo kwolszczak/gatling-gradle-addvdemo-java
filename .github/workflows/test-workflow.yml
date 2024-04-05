@@ -12,12 +12,14 @@ jobs:
         run: |
           echo "Hello world!"
           echo "Goodbye everyone ;( "
+
   perf-test:
     name: Performance tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Rung gatling script
         run: |
           ./gradlew gatlingRun-acetoys.RecordedSimulation \
