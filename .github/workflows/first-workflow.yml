@@ -21,6 +21,6 @@ jobs:
 
       - name: Run gatling
         run: |
-          ./gradlew gatlingRun-acetoys.RecordedSimulation
+          gradle gatlingRun-acetoys.RecordedSimulation
         
     
