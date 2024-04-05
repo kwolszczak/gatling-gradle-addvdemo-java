@@ -12,11 +12,7 @@ jobs:
   my-first-job:                        #name for job
     name: Run cos on Ubuntu
     runs-on: ubuntu-latest              #runners
-    steps:
-     - name: Checkout code
-        uses: actions/checkout@v4
-     
-     
+    steps:     
       - name: Print greeting
         run: echo "Hello World"
       
@@ -25,6 +21,6 @@ jobs:
 
       - name: Run gatling
         run: |
-          gradle gatlingRun-acetoys.RecordedSimulation
+          ./gradlew gatlingRun-acetoys.RecordedSimulation
         
     
