@@ -7,7 +7,7 @@ on:
   #this is second workflow 2
 
 jobs:
-  pre-job:                      #jobs run parallel now- untill you add needs
+  pre-job:
     runs-on: ubuntu-latest
     steps:
       - name: Say something
