@@ -1,5 +1,6 @@
 name: First Workflow                # name of workflow
 on: workflow_dispatch               # to run manually
+
 jobs:
   my-first-job:                        #name for job
     name: Run cos on Ubuntu
@@ -7,6 +8,12 @@ jobs:
     steps:
       - name: Print greeting
         run: echo "Hello World"
-      - name: Print goodbey
-        run: echo "Done - bey bey!"
+      
+      - name: Print goodbye
+        run: echo "Done - bye bye!"
+
+      - name: Run gatling
+        run: |
+          ./gradlew gatlingRun-acetoys.RecordedSimulation
+        
     
