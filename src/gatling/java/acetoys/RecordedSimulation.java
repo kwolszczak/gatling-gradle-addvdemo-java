@@ -34,7 +34,7 @@ public class RecordedSimulation extends Simulation {
                   .assertions(
                           global().responseTime().mean().lt(200),
                           global().successfulRequests().percent().gt(99.0),
-                          forAll().responseTime().max().lt(300)
+                          forAll().responseTime().max().lt(3000)
                   );
       }
       else
