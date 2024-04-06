@@ -15,7 +15,7 @@ jobs:
   my-first-job:
     env:
       TEST_ENV: "ENV TEST"#name for job
-    name: Run on Ubuntu - ${{ env.test_env }}
+    name: Run on Ubuntu - ${{ test_env }}
     runs-on: ubuntu-latest              #runners
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
