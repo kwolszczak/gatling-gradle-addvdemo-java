@@ -1,10 +1,9 @@
+# !!! adding special comment in commit can skip workflow , e.g. [skip ci]
 name: Deployment Exercise 3 - pull request
 on:
   workflow_dispatch:
   pull_request:
-    types:
-      - opened
-      - edited
+    types: [opened, edited]
   push:
     branches:
       - main
