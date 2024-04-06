@@ -1,4 +1,4 @@
-name: First Workflow                # name of workflow
+name: Performance test                # name of workflow
 on: workflow_dispatch               # to run manually
 
 permissions:
