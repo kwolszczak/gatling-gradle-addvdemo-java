@@ -20,6 +20,14 @@ jobs:
         run: echo "npm ci"
       - name: Test code
         run: echo "npm run build"
+  output-info-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Output event details
+        run: |
+          echo "Info: >>>> ${{ toJSON(github.event) }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
