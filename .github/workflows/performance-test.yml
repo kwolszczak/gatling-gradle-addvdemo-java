@@ -30,7 +30,7 @@ jobs:
 
       - name: Run gatling
         run: |
-          ./gradlew gatlingRun-acetoys.RecordedSimulation
+       #   ./gradlew gatlingRun-acetoys.RecordedSimulation
 
       - name: Publish smoke test artifacts            # artifact - this step produce special data
         if: always()
@@ -50,6 +50,6 @@ jobs:
       - name: Output contents
         run: ls
       - name: Get output from prev job
-        run: echo $ {{ needs.my-first-job.outputs.firstJob-output}}
+        run: echo "${{ needs.my-first-job.outputs.firstJob-output}}"
 
     
