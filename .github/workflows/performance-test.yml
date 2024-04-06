@@ -9,13 +9,13 @@ permissions:
   pull-requests: write
 
 env:
-  TEST_ENV: "Srodowisko testowe:QA"   #zmienna widoczna globalnie, nie mozna jej uzywac w job name, ale w stepach tak
+  test_env: "Srodowisko testowe:QA"   #zmienna widoczna globalnie, nie mozna jej uzywac w job name, ale w stepach tak
 
 jobs:
   my-first-job:
     env:
       TEST_ENV: "ENV TEST"#name for job
-    name: Run  on Ubuntu $TEST_ENV
+    name: Run on Ubuntu - ${{ env.test_env }}
     runs-on: ubuntu-latest              #runners
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
@@ -31,7 +31,7 @@ jobs:
 
       - name: Publish output                            # output - is special variable,we can pass to another job
         id: stepId
-        run: echo 'myOutput= testowa zmienna' >> $GITHUB_OUTPUT ';'
+        run: echo 'myOutput= testowa zmienna' >> $GITHUB_OUTPUT ';' #tutaj uzyta zmienna globalna
 
       - name: Run gatling
         run: |
