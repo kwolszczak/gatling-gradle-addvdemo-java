@@ -23,8 +23,8 @@ jobs:
       - name: Checkout code on ${{env.TEST_ENV}}
         uses: actions/checkout@v4
 
-      - name: Print greeting
-        run: echo "Hello World"
+      - name: Print secret password!
+        run: echo "secret password is ${{ secret.MONGODB_PASSWORD}}"
       
       - name: Print goodbye
         run: echo "Done - bye bye!"
