@@ -15,7 +15,7 @@ jobs:
   my-first-job:
     environment: qa-build
     env:
-      TEST_ENV: "ENV TEST"#name for job
+      TEST_ENV: "ENV TEST"              #zmienna
     name: Run on Ubuntu
     runs-on: ubuntu-latest              #runners
     outputs:
@@ -27,8 +27,8 @@ jobs:
       - name: Print secret password!
         run: |
           echo "secret password is ${{ secrets.MONGODB_PASSWORD}}"
-          echo "secret password from QA environment is ${{ secrets.PASSWORD_QA }}
-          echo "environment variable from QA  is ${{ env.MYVARIABLE_QA }}
+          echo "secret password from QA environment is ${{ secrets.PASSWORD_QA }}"
+          echo "environment variable from QA  is ${{ env.MYVARIABLE_QA }} "
 
       - name: Print goodbye
         run: echo "Done - bye bye!"
