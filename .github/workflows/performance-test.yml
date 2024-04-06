@@ -42,8 +42,8 @@ jobs:
       - name: Print secret password!
         run: |
           echo "secret password is ${{ secrets.MONGODB_PASSWORD}}"
-          echo "secret password from QA environment is ${{ secrets.PASSWORD_QA }}"
-          echo "environment variable from QA  is ${{ vars.MYVARIABLE_QA }} "
+          echo "secret password from QA environment is ${{ secrets.PASSWORD_ENV }}"
+          echo "environment variable from QA  is ${{ vars.MYVARIABLE_ENV}} "
 
       - name: Publish output                            # output - is special variable,we can pass to another job
         id: stepId
