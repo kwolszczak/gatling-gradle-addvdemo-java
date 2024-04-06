@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Print secret password!
-        run: echo "secret password is ${{ secret.MONGODB_PASSWORD}}"
+        run: echo "secret password is ${{ secrets.MONGODB_PASSWORD}}"
       
       - name: Print goodbye
         run: echo "Done - bye bye!"
