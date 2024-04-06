@@ -12,6 +12,8 @@ jobs:
   my-first-job:                        #name for job
     name: Run cos on Ubuntu
     runs-on: ubuntu-latest              #runners
+    outputs:
+      firstJob-output: ${{ steps.stepId.myOutput }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -22,11 +24,15 @@ jobs:
       - name: Print goodbye
         run: echo "Done - bye bye!"
 
+      - name: Publish output                            # output - is special variable,we can pass to another job
+        id: stepId
+        run: echo 'myOutput= testowa zmienna' >> $GITHUB_OUTPUT ';'
+
       - name: Run gatling
         run: |
           ./gradlew gatlingRun-acetoys.RecordedSimulation
 
-      - name: Publish smoke test artifacts
+      - name: Publish smoke test artifacts            # artifact - this step produce special data
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -43,5 +49,7 @@ jobs:
           name: build-output
       - name: Output contents
         run: ls
+      - name: Get output from prev job
+        run: echo $ {{ needs.my-first-job.outputs.firstJob-output}}
 
     
