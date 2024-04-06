@@ -51,7 +51,7 @@ jobs:
 
       - name: Run gatling
         run: |
-          ./gradlew gatlingRun-acetoys.RecordedSimulation -Pduration=${{github.event.inputs.duration}}
+          ./gradlew gatlingRun-acetoys.RecordedSimulation -Dduration=${{github.event.inputs.duration}}
 
       - name: Publish smoke test artifacts            # artifact - this step produce special data
         if: always()
