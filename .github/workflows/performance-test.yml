@@ -12,8 +12,10 @@ env:
   TEST_ENV: "Srodowisko testowe:QA"
 
 jobs:
-  my-first-job:                        #name for job
-    name: Run  on Ubuntu # ${{env.TEST_ENV}}
+  my-first-job:
+    env:
+      TEST_ENV: "ENV TEST"#name for job
+    name: Run  on Ubuntu  ${{env.TEST_ENV}}
     runs-on: ubuntu-latest              #runners
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
