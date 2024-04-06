@@ -6,11 +6,12 @@ on:
         description: "Choose environment to run test: QA / TEST"
         required: true
         default: qa
+        type: choice
         options:
           - qa
           - test
       duration:
-        description: "Put duration time"
+        description: "Put duration time [s]"
         required: false
         type: number
 
@@ -50,7 +51,7 @@ jobs:
 
       - name: Run gatling
         run: |
-       #   ./gradlew gatlingRun-acetoys.RecordedSimulation
+          ./gradlew gatlingRun-acetoys.RecordedSimulation -Pduration=${{github.event.inputs.duration}}
 
       - name: Publish smoke test artifacts            # artifact - this step produce special data
         if: always()
