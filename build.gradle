@@ -18,3 +18,26 @@ repositories {
   mavenCentral()
 }
 
+ext {
+    par =project.properties['par']
+}
+
+task printProperty {
+    doLast {
+        println "System properties: "+ System.properties['par']
+        println "Project properties: "+  project.properties['par']
+    }
+}
+
+
+
+// Define a task to run the PropertyReader class
+task runPropertyReader(type: JavaExec) {
+    classpath = sourceSets.gatling.runtimeClasspath
+    main = 'PropertyReader'
+     // systemProperty 'par', project.hasProperty('par') ? project.property('par') : project.par
+    systemProperty 'par', project.par
+}
+
+
+
