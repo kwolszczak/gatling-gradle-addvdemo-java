@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "secret password is ${{ secrets.MONGODB_PASSWORD}}"
           echo "secret password from QA environment is ${{ secrets.PASSWORD_QA }}"
-          echo "environment variable from QA  is ${{ env.MYVARIABLE_QA }} "
+          echo "environment variable from QA  is ${{ vars.MYVARIABLE_QA }} "
 
       - name: Print goodbye
         run: echo "Done - bye bye!"
