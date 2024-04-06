@@ -17,3 +17,5 @@ gatling {
 repositories {
   mavenCentral()
 }
+
+def projectProperties = project.properties.subMap(["duration"])
