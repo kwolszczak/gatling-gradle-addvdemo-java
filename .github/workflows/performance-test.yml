@@ -15,7 +15,7 @@ jobs:
   my-first-job:
     env:
       TEST_ENV: "ENV TEST"#name for job
-    name: Run  on Ubuntu  ${{env.TEST_ENV}}
+    name: Run  on Ubuntu
     runs-on: ubuntu-latest              #runners
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
@@ -45,7 +45,7 @@ jobs:
           path: build/reports/gatling
           retention-days: 7
   my-second-job:
-    name: Second job ${{env.TEST_ENV}}
+    name: Second job
     needs: my-first-job
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +53,7 @@ jobs:
      #   uses: actions/download-artifact@v4
      #   with:
      #     name: build-output
-      - name: Output contents
+      - name: Output contents on ${{env.TEST_ENV}}
         run: ls
       - name: Get output from prev job
         run: echo "${{ needs.my-first-job.outputs.firstJob-output }}"
