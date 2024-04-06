@@ -43,10 +43,10 @@ jobs:
     needs: my-first-job
     runs-on: ubuntu-latest
     steps:
-      - name: Get build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-output
+     # - name: Get build artifacts
+     #   uses: actions/download-artifact@v4
+     #   with:
+     #     name: build-output
       - name: Output contents
         run: ls
       - name: Get output from prev job
