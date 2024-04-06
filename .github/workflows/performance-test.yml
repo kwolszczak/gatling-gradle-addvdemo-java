@@ -9,13 +9,13 @@ permissions:
   pull-requests: write
 
 env:
-  TEST_ENV: "Srodowisko testowe:QA"
+  TEST_ENV: "Srodowisko testowe:QA"   #zmienna widoczna globalnie, nie mozna jej uzywac w job name, ale w stepach tak
 
 jobs:
   my-first-job:
     env:
       TEST_ENV: "ENV TEST"#name for job
-    name: Run  on Ubuntu
+    name: Run  on Ubuntu $TEST_ENV
     runs-on: ubuntu-latest              #runners
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
