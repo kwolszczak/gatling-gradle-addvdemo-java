@@ -5,6 +5,11 @@ on:
     types:
       - opened
       - edited
+  push:
+    branches:
+      - main
+      - 'dev-*'       # dev-new , dev-this-is-new,                   * wszystkie znaki oprocz /
+      - 'feat/**'     # feat/new , feat/new/button                    ** wszystkie znaki w tym slashe /
 jobs:
   lint:
     runs-on: ubuntu-latest
