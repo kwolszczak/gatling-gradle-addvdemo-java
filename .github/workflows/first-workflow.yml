@@ -25,7 +25,7 @@ jobs:
       - name: Run gatling
         run: |
           ./gradlew gatlingRun-acetoys.RecordedSimulation
-          
+
       - name: Publish smoke test artifacts
         if: always()
         uses: actions/upload-artifact@v4
