@@ -42,7 +42,7 @@ jobs:
           name: build-output
           path: build/reports/gatling
           retention-days: 7
-  my-second-job:
+  my-second-job-${{env.TEST_ENV}}:
     needs: my-first-job
     runs-on: ubuntu-latest
     steps:
