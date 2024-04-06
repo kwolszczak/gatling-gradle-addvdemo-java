@@ -8,6 +8,9 @@ permissions:
   packages: read
   pull-requests: write
 
+env:
+  TEST_ENV: "Srodowisko testowe:QA"
+
 jobs:
   my-first-job:                        #name for job
     name: Run cos on Ubuntu
@@ -15,7 +18,7 @@ jobs:
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
     steps:
-      - name: Checkout code
+      - name: Checkout code on ${{env.TEST_ENV}}
         uses: actions/checkout@v4
 
       - name: Print greeting
