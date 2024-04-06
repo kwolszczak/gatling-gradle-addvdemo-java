@@ -13,7 +13,7 @@ jobs:
     name: Run cos on Ubuntu
     runs-on: ubuntu-latest              #runners
     outputs:
-      firstJob-output: ${{ steps.stepId.myOutput }}
+      firstJob-output: ${{ steps.stepId.outputs.myOutput }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -50,6 +50,6 @@ jobs:
       - name: Output contents
         run: ls
       - name: Get output from prev job
-        run: echo "${{ needs.my-first-job.outputs.firstJob-output}}"
+        run: echo "${{ needs.my-first-job.outputs.firstJob-output }}"
 
     
