@@ -13,7 +13,7 @@ env:
 
 jobs:
   my-first-job:                        #name for job
-    name: Run cos on Ubuntu
+    name: Run  on Ubuntu --${{env.TEST_ENV}}
     runs-on: ubuntu-latest              #runners
     outputs:
       firstJob-output: ${{ steps.stepId.outputs.myOutput }}
@@ -42,7 +42,7 @@ jobs:
           name: build-output
           path: build/reports/gatling
           retention-days: 7
-  my-second-job-${{env.TEST_ENV}}:
+  my-second-job:
     needs: my-first-job
     runs-on: ubuntu-latest
     steps:
