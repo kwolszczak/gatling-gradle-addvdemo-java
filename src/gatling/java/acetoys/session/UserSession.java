@@ -51,4 +51,6 @@ public class UserSession {
                 return session.set("basketTotalPrice", df.format(currentTotal - itemPrice));
             });
 
+
+
 }
