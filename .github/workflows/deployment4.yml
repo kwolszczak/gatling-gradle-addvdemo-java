@@ -48,9 +48,6 @@ jobs:
   report:
     needs: build
     if: always() #cancelled()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Output information
-        uses: "./.github/workflows/reusable.yml"
-        with:
-          myInput: "lalal la la la"   #
+    uses: "./.github/workflows/reusable.yml"
+    with:
+      myInput: "lalal la la la"   #
