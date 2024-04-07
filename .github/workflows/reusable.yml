@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Reusable output information
-        run: echo "Publish & send it ... ${{ github.event.inputs.myInput}}"
+        run: echo "Publish & send it ... ${{ inputs.myInput}}"
