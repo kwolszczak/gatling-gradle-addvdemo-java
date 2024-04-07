@@ -5,6 +5,7 @@ on:
       env:
         description: "Choose an environment [QA / TEST]"
         required: true
+        type: choice
         options: [qa, test]
   push:
     branches: [main, feature]
@@ -20,9 +21,15 @@ jobs:
       - name: Get the code
         uses: actions/checkout@v4
       - name: Test the code on ${{ github.event.inputs.env }}
+        id: idRunTest
         run: |
           echo "test variable: ${{ vars.MYVARIABLE_ENV }} "
+        if: steps.idRunTest.outcome == failure
+      - name: Run this if prev failed
+        run: |
+          echo "This step should run only if previous step failed"
   build:
+    needs: lint
     runs-on: ubuntu-latest
     environment: ${{github.event.inputs.env}}-build
     steps:
