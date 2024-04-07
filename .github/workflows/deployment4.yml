@@ -52,4 +52,4 @@ jobs:
     with:
       myInput: "lalal la la la"   #
     secrets:
-      some-secret: "1234"
+      some-secret: ${{secrets.PASSWORD_ENV}}
