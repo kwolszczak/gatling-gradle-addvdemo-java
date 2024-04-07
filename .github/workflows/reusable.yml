@@ -1,9 +1,16 @@
 name: Reusable Publish
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      myInput:
+        description: Inputs from other workflow
+        required: true
+        default: myInId
+        type: string
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Reusable output information
-        run: echo "Publish & send it ..."
+        run: echo "Publish & send it ... ${{ github.event.inputs.myInput}}"
