@@ -58,4 +58,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print results from previous job output
-        run: echo ${{ needs.report.outputs.resultX}}
+        run: echo "${{ needs.report.outputs.resultX}}"
