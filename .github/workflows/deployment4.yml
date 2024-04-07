@@ -27,10 +27,12 @@ jobs:
 
       - name: Run this if prev failed
         if: failure() && steps.idRunTest.outcome == 'failure'           # failure() true if any step fail,# success() true if all steps ok # always(), cancelled()
+                                                                        # step will be done if there was an error but TEST will FAIL
         run: |
           echo "This step should run only if previous step failed"
       - name: Run this even if there was an error
         continue-on-error: true                                         # always continue - even if there is an error
+                                                                        # !! the Test will pass even if there is an error TEST will PASS
         run: |
           echo "always continue - even if there is an error"
   build:
