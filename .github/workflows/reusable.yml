@@ -26,4 +26,4 @@ jobs:
       - name: Reusable output information
         run: echo "Publish & send it ... ${{ inputs.myInput}}, and the secret is ${{secrets.some-secret}}"
       - name: Upload
-        run: echo "step-result= 'success is the key of winning'" >> $GITHUB_OUTPUT
+        run: echo "step-result= success is the key of winning" >> $GITHUB_OUTPUT
