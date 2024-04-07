@@ -47,7 +47,7 @@ jobs:
           echo "Build the code"
   report:
     needs: build
-    if: cancelled()
+    if: always() #cancelled()
     runs-on: ubuntu-latest
     steps:
       - name: Output information
