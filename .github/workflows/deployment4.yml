@@ -26,7 +26,7 @@ jobs:
           echo "test variable: ${{ vars.MYVARIABLE_ENV }} "
 
       - name: Run this if prev failed
-        if: failure() && steps.idRunTest.outcome == 'failure'
+        if: failure() && steps.idRunTest.outcome == 'failure'           # failure() true if any step fail,# success() true if all steps ok # always(), cancelled()
         run: |
           echo "This step should run only if previous step failed"
   build:
@@ -39,3 +39,10 @@ jobs:
       - name: Build
         run: |
           echo "Build the code"
+  report:
+    needs: build
+    if: cancelled()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: echo "Reports from deployment process"
