@@ -13,14 +13,14 @@ on:
     outputs:
       resultX:
         description: The result from the step
-        value: ${{jobs.publish.otuputs.outcome}}
+        value: ${{jobs.publish.outputs.outcome}}
 
 
 
 jobs:
   publish:
     outputs:
-      outcome: ${{steps.idPub.outputs.step-result}}
+      outcome: ${{ steps.idPub.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
       - name: Reusable output information
