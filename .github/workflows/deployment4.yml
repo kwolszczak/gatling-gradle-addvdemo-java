@@ -24,8 +24,9 @@ jobs:
         id: idRunTest
         run: |
           echo "test variable: ${{ vars.MYVARIABLE_ENV }} "
-        if: failure() && steps.idRunTest.outcome == 'failure'
+
       - name: Run this if prev failed
+        if: failure() && steps.idRunTest.outcome == 'failure'
         run: |
           echo "This step should run only if previous step failed"
   build:
