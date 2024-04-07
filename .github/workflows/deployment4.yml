@@ -53,3 +53,9 @@ jobs:
       myInput: "lalal la la la"   #
     secrets:
       some-secret: ${{secrets.PASSWORD_ENV}}
+  print-report:
+    needs: report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print results from previous job output
+        run: echo ${{ needs.report.outputs.resultX}}

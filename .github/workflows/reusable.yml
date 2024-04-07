@@ -10,11 +10,20 @@ on:
     secrets:
       some-secret:
         required: true
+    outputs:
+      resultX:
+        description: The result from the step
+        value: ${{jobs.publish.otuputs.outcome}}
+
 
 
 jobs:
   publish:
+    outputs:
+      outcome: ${{steps.set-result.outputs.step-result}}
     runs-on: ubuntu-latest
     steps:
       - name: Reusable output information
         run: echo "Publish & send it ... ${{ inputs.myInput}}, and the secret is ${{secrets.some-secret}}"
+      - name: Upload
+        run: echo "step-result= 'success is the key of winning'" >> $GITHUB_OUTPUT
