@@ -29,6 +29,10 @@ jobs:
         if: failure() && steps.idRunTest.outcome == 'failure'           # failure() true if any step fail,# success() true if all steps ok # always(), cancelled()
         run: |
           echo "This step should run only if previous step failed"
+      - name: Run this even if there was an error
+        continue-on-error: true                                         # always continue - even if there is an error
+        run: |
+          echo "always continue - even if there is an error"
   build:
     needs: lint
     runs-on: ubuntu-latest
