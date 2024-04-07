@@ -7,10 +7,14 @@ on:
         required: true
         default: myInId
         type: string
+    secrets:
+      some-secret:
+        required: true
+
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Reusable output information
-        run: echo "Publish & send it ... ${{ inputs.myInput}}"
+        run: echo "Publish & send it ... ${{ inputs.myInput}}, and the secret is ${{secrets.some-secret}}"
