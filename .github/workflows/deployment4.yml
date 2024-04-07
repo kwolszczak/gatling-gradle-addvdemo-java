@@ -51,6 +51,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        uses: "./.github/workflow/reusable.yml"
+        uses: "./.github/workflows/reusable.yml"
         with:
           myInput: "lalal la la la"   #
