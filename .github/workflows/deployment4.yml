@@ -51,4 +51,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: echo "Reports from deployment process"
+        uses: "./.github/workflow/reusable.yml"

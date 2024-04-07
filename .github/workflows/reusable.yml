@@ -1,0 +1,9 @@
+name: Reusable Publish
+on: workflow_call
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reusable output information
+        run: echo "Publish & send it ..."
