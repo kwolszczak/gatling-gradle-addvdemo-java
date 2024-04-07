@@ -1,0 +1,33 @@
+name: Deployment Exercise 4 - flow control
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Choose an environment [QA / TEST]"
+        required: true
+        options: [qa, test]
+  push:
+    branches: [main, feature]
+    paths-ignore: ['.github/**']
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.env}}-build
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+      - name: Test the code on ${{ github.event.inputs.env }}
+        run: |
+          echo "test variable: ${{ vars.MYVARIABLE_ENV }} "
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{github.event.inputs.env}}-build
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+          echo "Build the code"
