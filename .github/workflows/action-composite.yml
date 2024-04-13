@@ -27,7 +27,7 @@ jobs:
           caching: false
       - name: Tell if cache was done
         run: |
-          echo "Was it cached ? ${{steps.cache-deps}}"
+          echo "Was it cached ? ${{steps.cache-deps.outputs.caching-flag}}"
 
   build:
     needs: lint

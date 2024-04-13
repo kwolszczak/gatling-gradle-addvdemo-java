@@ -23,7 +23,7 @@ runs:
       shell: bash
     - name: Test the code
       run: |
-        echo "running the code"
+        echo "test the code"
       shell: bash #this step is necessary when you use run:
   
 
