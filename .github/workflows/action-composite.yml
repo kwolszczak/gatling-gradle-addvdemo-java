@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions
         id: cache-deps
         with:
-          caching: true
+          caching: 'true'
       - name: Tell if cache was done
         run: |
           echo "Was it cached ? ${{ steps.cache-deps.outputs.caching-flag }}"
