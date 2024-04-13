@@ -57,10 +57,13 @@ jobs:
     steps:
       - name: Print results from previous job output
         run: echo "${{ needs.report.outputs.resultX}}"
-  information:
+  deploy-aws:
     runs-on: ubuntu-latest
     steps:
       - name: Get the code
         uses: actions/checkout@v4
       - name: Run custom action
         uses: './.github/js'
+        with:
+          bucket: gha-custom-action-hosting
+          dist-folder: ./dist
