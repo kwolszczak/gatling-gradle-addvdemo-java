@@ -57,3 +57,8 @@ jobs:
     steps:
       - name: Print results from previous job output
         run: echo "${{ needs.report.outputs.resultX}}"
+  information:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run custom action
+        uses: './.github/js'
