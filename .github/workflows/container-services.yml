@@ -13,6 +13,8 @@ jobs:
   test:
     environment: ${{github.event.inputs.envir}}-build
     runs-on: ubuntu-latest
+    container:
+      image: hello-world
     env:
       MONGODB_CONNECTION_PROTOCOL: mongo
       MONGODB_CLUSTER_ADDRESS: myMongo
