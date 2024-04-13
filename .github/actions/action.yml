@@ -5,7 +5,7 @@ inputs:
   caching:
     description: "Weather to cache or not"
     required: false
-    default: true
+    default: 'true'
 outputs:
   caching-flag:
     description: "Whether cache was used or not- flag"
