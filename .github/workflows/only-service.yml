@@ -1,4 +1,4 @@
-name: Workflow with cotainers and services
+name: Workflow with service cointainer. Job run on runner without container
 on:
   workflow_dispatch:
     inputs:
@@ -13,18 +13,25 @@ jobs:
   test:
     environment: ${{github.event.inputs.envir}}-build
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.40.0-jammy
     services:
        myMongo:
          image: mongo
+         ports:
+           #host port(left) on your local machine
+           #container port(right) on docker
+           #example you want 9000:8080 and you wnat to get to service, you should run localhost:9000
+           - 27017:27017 #internal port -forward -
+         #you have to open port on container to connect outside
          env:
            MONGO_INITDB_ROOT_USERNAME: root
            MONGO_INITDB_ROOT_PASSWORD: example
 
     env:
+      #when job doesn't run on container instead on runner(ubuntu-latest)
+      # there are different networks between runner and service container, different ipAddresses,networks names ...
+      # when we have job and service on containers (2 different), docker create shared network between them
       MONGODB_CONNECTION_PROTOCOL: mongo
-      MONGODB_CLUSTER_ADDRESS: myMongo
+      MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
