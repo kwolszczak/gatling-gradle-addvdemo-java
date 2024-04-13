@@ -66,4 +66,4 @@ jobs:
         uses: './.github/js'
         with:
           bucket: gha-custom-action-hosting
-          dist-folder: ./dist
+          dist-folder: ./.github/workflows
