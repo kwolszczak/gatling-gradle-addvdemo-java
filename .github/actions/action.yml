@@ -1,0 +1,14 @@
+# this file is necessary  for any custom action
+name: 'Get & Test Code'
+description: "It is composite Action .Get your code and then run some tests"
+runs:
+  using: 'composite'
+  steps:
+    - name: Get the code
+      uses: actions/checkout@v4
+    - name: Test the code
+      run: |
+        echo "running the code"
+      shell: bash #this step is necessary when you use run:
+  
+

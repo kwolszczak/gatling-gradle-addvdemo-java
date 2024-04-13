@@ -1,0 +1,44 @@
+name: Deployment Exercise 4 - flow control
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Choose an environment [QA / TEST]"
+        required: true
+        type: choice
+        options: [qa, test]
+  push:
+    branches: [main, feature]
+    paths-ignore: ['.github/**']
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.env}}-build
+    steps:
+      - name: Use custom action
+        uses: ./github/actions
+
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    environment: ${{github.event.inputs.env}}-build
+    steps:
+      - name: Use custom once again
+        uses: ./github/actions
+  report:
+    needs: build
+    if: always() #cancelled()
+    uses: "./.github/workflows/reusable.yml"
+    with:
+      myInput: "lalal la la la"   #
+    secrets:
+      some-secret: ${{secrets.PASSWORD_ENV}}
+  print-report:
+    needs: report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print results from previous job output
+        run: echo "${{ needs.report.outputs.resultX}}"
