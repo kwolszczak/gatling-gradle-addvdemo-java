@@ -17,10 +17,11 @@ jobs:
        myMongo:
          image: mongo
          ports:
+           - 27017:27017
            #host port(left) on your local machine
            #container port(right) on docker
            #example you want 9000:8080 and you wnat to get to service, you should run localhost:9000
-           - 27017:27017 #internal port -forward -
+            #internal port -forward -
          #you have to open port on container to connect outside
          env:
            MONGO_INITDB_ROOT_USERNAME: root
