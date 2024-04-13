@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Use custom action
         id: cache-deps
-        uses: ./.github/actions
+        uses: ./.github/actions/compose
         with:
           caching: 'true'
       - name: Tell if cache was done
@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Use custom once again
         id: customAction
-        uses: ./.github/actions
+        uses: ./.github/actions/compose
       - name: Tell if cache was done
         run: |
           echo "Was it cached ? ${{ steps.customAction.outputs.caching-flag }}"
