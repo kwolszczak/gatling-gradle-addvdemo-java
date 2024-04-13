@@ -5,7 +5,9 @@ runs:
   using: 'composite'
   steps:
     - name: Cache something
-      uses: actions/cache@v4
+      run: |
+        echo "Cache .... cache...."
+      shell: bash
     - name: Test the code
       run: |
         echo "running the code"
