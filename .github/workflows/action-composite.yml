@@ -22,8 +22,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Use custom action
         uses: ./.github/actions
+        id: cache-deps
         with:
           caching: false
+      - name: Tell if cache was done
+        run: |
+          echo "Was it cached ? ${{steps.cache-deps}}
 
   build:
     needs: lint

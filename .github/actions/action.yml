@@ -6,14 +6,20 @@ inputs:
     description: "Weather to cache or not"
     required: false
     default: true
+outputs:
+  caching-flag:
+    description: "Whether cache was used or not- flag"
+    value: ${{ steps.cache.outputs.zmienna}}
 
 runs:
   using: 'composite'
   steps:
     - name: Cache something
       if: inputs.caching == true
+      id: cache
       run: |
         echo "Cache .... cache...."
+        echo "zmienna=${{inputs.caching}}" >> GITHUB_OUTPUT
       shell: bash
     - name: Test the code
       run: |
