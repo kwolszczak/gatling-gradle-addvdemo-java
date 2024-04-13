@@ -21,8 +21,8 @@ jobs:
       - name: Get the code
         uses: actions/checkout@v4
       - name: Use custom action
-        uses: ./.github/actions
         id: cache-deps
+        uses: ./.github/actions
         with:
           caching: 'true'
       - name: Tell if cache was done
@@ -37,7 +37,12 @@ jobs:
       - name: Get the code
         uses: actions/checkout@v4
       - name: Use custom once again
+        id: customAction
         uses: ./.github/actions
+      - name: Tell if cache was done
+        run: |
+          echo "Was it cached ? ${{ steps.customAction.outputs.caching-flag }}"
+
   report:
     needs: build
     if: always() #cancelled()

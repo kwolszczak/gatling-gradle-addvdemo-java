@@ -19,7 +19,7 @@ runs:
       id: cache
       run: |
         echo "Cache .... cache...."
-        echo "zmienna= '${{inputs.caching}}' " >> GITHUB_OUTPUT ';'
+        echo "zmienna= '${{inputs.caching}}' " >> $GITHUB_OUTPUT ';'
       shell: bash
     - name: Test the code
       run: |
