@@ -72,6 +72,7 @@ jobs:
           bucket: gha-custom-action-hosting
           dist-folder: ./.github/workflows
       - name: Output info
+        if: always()
         run: |
           echo "Live URL: ${{ steps.deployAws.outputs.website-url}} "
           
