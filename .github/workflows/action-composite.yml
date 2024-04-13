@@ -19,7 +19,7 @@ jobs:
     environment: ${{ github.event.inputs.env}}-build
     steps:
       - name: Use custom action
-        uses: ./github/actions
+        uses: ./.github/actions
 
   build:
     needs: lint
@@ -27,7 +27,7 @@ jobs:
     environment: ${{github.event.inputs.env}}-build
     steps:
       - name: Use custom once again
-        uses: ./github/actions
+        uses: ./.github/actions
   report:
     needs: build
     if: always() #cancelled()
