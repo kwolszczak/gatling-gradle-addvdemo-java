@@ -16,7 +16,7 @@ function run() {
   // 2) upload file
   // on linux runner there is preinstalled aws CLI to run commands
   const s3Uri = `s3://${bucket}`
-  exec.exec('aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}')
+  exec.exec(`aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion}`)
 }
 
 run()
