@@ -73,5 +73,5 @@ jobs:
           dist-folder: ./.github/workflows
       - name: Output info
         run: |
-          echo "Live URL: ${{ steps.deployAws.outputs.websiteUrl}} "
+          echo "Live URL: ${{ steps.deployAws.outputs.website-url}} "
           
