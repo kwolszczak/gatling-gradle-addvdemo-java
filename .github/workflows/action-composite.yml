@@ -1,4 +1,4 @@
-name: Deployment Exercise 4 - flow control
+name: Compose Action
 on:
   workflow_dispatch:
     inputs:
