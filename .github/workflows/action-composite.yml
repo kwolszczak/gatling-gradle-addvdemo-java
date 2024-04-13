@@ -33,7 +33,7 @@ jobs:
     if: always() #cancelled()
     uses: "./.github/workflows/reusable.yml"
     with:
-      myInput: "lalal la la la two"   #
+      myInput: "lalal la la la two 6"   #
     secrets:
       some-secret: ${{secrets.PASSWORD_ENV}}
   print-report:
