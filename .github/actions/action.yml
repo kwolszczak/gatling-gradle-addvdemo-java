@@ -1,10 +1,17 @@
 # this file is necessary  for any custom action
 name: 'Cache & Test Code'
 description: "It is composite Action .Get your code and then run some tests"
+inputs:
+  caching:
+    description: "Weather to cache or not"
+    required: false
+    default: true
+
 runs:
   using: 'composite'
   steps:
     - name: Cache something
+      if: caching == true
       run: |
         echo "Cache .... cache...."
       shell: bash
