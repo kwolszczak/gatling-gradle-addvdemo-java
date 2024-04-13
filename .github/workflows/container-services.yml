@@ -1,0 +1,33 @@
+name: Workflow with cotainers and services
+on:
+  workflow_dispatch:
+    inputs:
+      envir:
+        description: "Choose an environement QA/Test"
+        required: true
+        type: choice
+        options:
+          - qa
+          - test
+jobs:
+  test:
+    environment: ${{github.event.inputs.envir}}-build
+    runs-on: ubuntu-latest
+    env:
+      MONGODB_CONNECTION_PROTOCOL: mongo
+      MONGODB_CLUSTER_ADDRESS: myMongo
+      MONGODB_USERNAME: X
+      MONGODB_PASSWORD: X
+      PORT: 8080
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+      - name: Test the code
+        run: |
+          echo "Running tests ...."
+      - name: Connect to the MongoDB
+        run: |
+          echo "Connecting do DB: ${{env.MONGODB_CLUSTER_ADDRESS}}"
+      
+
